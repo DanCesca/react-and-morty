@@ -3,20 +3,5 @@
 .App {
   text-align: center;
   font-family: Rubik Wet Paint, sans-serif;
-}
-
-.dot {
-  height: 25px;
-  width: 25px;
-  background-color: #be4adb;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  list-style-type: none;
+  margin-bottom: 6rem;
 }
