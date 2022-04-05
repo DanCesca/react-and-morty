@@ -12,7 +12,6 @@ const NavWrapper = styled.nav`
 const List = styled.ul`
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: space-evenly;
   list-style-type: none;
 `;
@@ -28,14 +27,6 @@ const Link = styled.li`
   a:hover {
     color: white;
   }
-`;
-
-const LinkContent = styled.span`
-  height: 1.5rem;
-  width: 1.5rem;
-  background-color: #be4adb;
-  border-radius: 50%;
-  display: inline-block;
 `;
 
 export default function NavBar() {

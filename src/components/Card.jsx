@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 const CardWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   justify-content: space-evenly;
 
   li {
@@ -16,15 +15,11 @@ const CardWrapper = styled.section`
   }
 `;
 
-export default function Card() {
+export default function Card({ fetchApi }) {
   const [characters, setCharacters] = useState([]);
 
-  const url = "https://rickandmortyapi.com/api/character/";
-
   const loadCharacters = () => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => setCharacters(data.results));
+    fetchApi().then((data) => setCharacters(data.results));
   };
 
   useEffect(() => {
@@ -33,14 +28,14 @@ export default function Card() {
 
   return (
     <CardWrapper>
-      <div>
+      <ul>
         {characters.map((character) => (
           <li key={character.id}>
-            <img src={character.image} alt="{charachter.name}" />
+            <img src={character.image} alt={character.name} />
             <p>{character.name}</p>
           </li>
         ))}
-      </div>
+      </ul>
     </CardWrapper>
   );
 }

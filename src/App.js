@@ -4,10 +4,18 @@ import Card from "./components/Card";
 import NavBar from "./components/NavBar";
 
 function App() {
+  const url = "https://rickandmortyapi.com/api/character/";
+
+  const fetchApi = () => {
+    return fetch(url).then((response) => {
+      return response.json();
+    });
+  };
+
   return (
     <div className="App">
       <Header />
-      <Card />
+      <Card fetchApi={fetchApi} />
       <NavBar />
     </div>
   );
