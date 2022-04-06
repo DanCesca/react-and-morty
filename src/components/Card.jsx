@@ -35,7 +35,7 @@ export default function Card({ fetchApi }) {
 
   return (
     <CardWrapper>
-      <ul>
+      <ul role="list">
         {characters.map((character) => (
           <li key={character.id}>
             <img src={character.image} alt={character.name} />

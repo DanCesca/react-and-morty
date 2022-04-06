@@ -37,7 +37,7 @@ export default function DetailedCard() {
 
   return (
     <CardWrapper>
-      <ul>
+      <ul role="list">
         <li key={character.id}>
           <img src={character.image} alt={character.name} />
           <p>{character.name}</p>
