@@ -22,17 +22,8 @@ const CardWrapper = styled.section`
   }
 `;
 
-export default function Card({ fetchApi }) {
-  const [characters, setCharacters] = useState([]);
-
-  const loadCharacters = () => {
-    fetchApi().then((data) => setCharacters(data.results));
-  };
-
-  useEffect(() => {
-    loadCharacters();
-  }, []);
-
+export default function Card({ characters }) {
+  
   return (
     <CardWrapper>
       <ul role="list">

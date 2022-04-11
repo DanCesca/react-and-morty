@@ -5,3 +5,21 @@
   font-family: Rubik Wet Paint, sans-serif;
   margin-bottom: 6rem;
 }
+
+.fav__btn {
+ 
+  font: inherit;
+  font-size: 0.8em;
+  border: 2px solid #be4adb;
+  border-radius: 1em;
+  width: 6em;
+  text-align: center;
+}
+
+.unselected {
+  background-color: #fff;
+}
+
+.selected {
+  background-color: green;
+}

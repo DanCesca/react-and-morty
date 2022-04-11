@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "../App.css";
 
 const CardWrapper = styled.section`
   display: flex;
@@ -16,35 +16,38 @@ const CardWrapper = styled.section`
   }
 `;
 
-export default function DetailedCard() {
+export default function DetailedCard({ characters, toggleFavouriteStatus }) {
   const { id } = useParams();
-  const url = "https://rickandmortyapi.com/api/character/" + id;
-  const [character, setCharacter] = useState({});
+  const character = characters.find((character) => {
+    return character.id === parseInt(id);
+  });
 
-  const fetchCharacter = () => {
-    return fetch(url).then((response) => {
-      return response.json();
-    });
+  function toggleFavouriteStatusOnClick() {
+    toggleFavouriteStatus(character.id);
   };
-
-  const loadCharacter = () => {
-    fetchCharacter().then((data) => setCharacter(data));
-  };
-
-  useEffect(() => {
-    loadCharacter();
-  }, []);
 
   return (
-    <CardWrapper>
-      <ul role="list">
-        <li key={character.id}>
-          <img src={character.image} alt={character.name} />
-          <p>{character.name}</p>
-          <p>Status: {character.status}</p>
-          <p>Species: {character.species}</p>
-        </li>
-      </ul>
-    </CardWrapper>
+    <>
+      {character && (
+        <CardWrapper>
+          <ul role="list">
+            <li key={character.id}>
+              <img src={character.image} alt={character.name} />
+              <p>{character.name}</p>
+              <p>Status: {character.status}</p>
+              <p>Species: {character.species}</p>
+              <button
+                onClick={toggleFavouriteStatusOnClick}
+                className={`fav__btn ${
+                  character.isFavourite === false ? "unselected" : "selected"
+                }`}
+              >
+                Favourite
+              </button>
+            </li>
+          </ul>
+        </CardWrapper>
+      )}
+    </>
   );
 }
